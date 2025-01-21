@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://draiodnsaq18t"]
+
+[ext_resource type="Script" path="res://Entities/Asteroids/asteroid.gd" id="1_auu2k"]
+
+[node name="Asteroid" type="RigidBody2D"]
+input_pickable = true
+gravity_scale = 0.0
+contact_monitor = true
+linear_damp = 0.8
+angular_damp = 4.0
+script = ExtResource("1_auu2k")
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-128, 128, -256, 64, -192, -64, -256, -192, -64, -256, 64, -128, 256, -128, 192, 0, 128, 64, 64, 64)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-128, 128, -256, 64, -192, -64, -256, -192, -64, -256, 64, -128, 256, -128, 192, 0, 128, 64, 64, 64)
+
+[node name="Line2D" type="Line2D" parent="Polygon2D"]
+width = 5.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

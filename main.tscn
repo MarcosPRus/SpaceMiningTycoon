@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl8qwvh0d76mh"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_grkkd"]
+[ext_resource type="PackedScene" uid="uid://draiodnsaq18t" path="res://Entities/Asteroids/asteroid.tscn" id="2_0uvr0"]
+[ext_resource type="PackedScene" uid="uid://cnf2wpnymnas" path="res://Entities/Mining Poly/mining_poly.tscn" id="2_e1wx0"]
+[ext_resource type="PackedScene" uid="uid://kejbthfckq07" path="res://Entities/Player/player.tscn" id="2_qyqwq"]
+
+[node name="MiningTest1" type="Node2D"]
+script = ExtResource("1_grkkd")
+
+[node name="MiningPoly" parent="." instance=ExtResource("2_e1wx0")]
+visible = false
+
+[node name="Asteroid" parent="." instance=ExtResource("2_0uvr0")]
+position = Vector2(-337, -116)
+
+[node name="Asteroid2" parent="." instance=ExtResource("2_0uvr0")]
+position = Vector2(-373, 289)
+
+[node name="Asteroid3" parent="." instance=ExtResource("2_0uvr0")]
+position = Vector2(357, 238)
+
+[node name="Asteroid4" parent="." instance=ExtResource("2_0uvr0")]
+position = Vector2(330, -132)
+
+[node name="Player" parent="." instance=ExtResource("2_qyqwq")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
