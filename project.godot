@@ -13,7 +13,6 @@ config_version=5
 config/name="SpaceMiningTycoon"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(0, 0.042991, 0.0162595, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -68,4 +67,5 @@ left_click={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.445446, 0.177728, 0.418857, 1)
+viewport/hdr_2d=true

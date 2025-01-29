@@ -6,6 +6,7 @@ var asteroid_scene = preload("res://Entities/Asteroids/asteroid.tscn")
 
 @onready var visual_poly := $Polygon2D
 @onready var collision_poly := $CollisionPolygon2D
+@onready var occluder_poly : OccluderPolygon2D = $LightOccluder2D.occluder
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +23,7 @@ func _ready() -> void:
 			var vertex = Vector2(length * cos(deg_to_rad(ang)), length * sin(deg_to_rad(ang)))
 			visual_poly.polygon[i] = vertex
 			collision_poly.polygon[i] = vertex
+			occluder_poly.polygon[i] = vertex
 			
 			ang += 360/visual_poly.polygon.size()
 	
@@ -57,6 +59,7 @@ func mine() -> void:
 		new_asteroid_poly[1] = Transform2D(-self.rotation, Vector2.ZERO) * new_asteroid_poly[1]
 		asteroid_instance.get_node("Polygon2D").polygon = new_asteroid_poly[1]
 		asteroid_instance.get_node("CollisionPolygon2D").set_deferred("polygon", new_asteroid_poly[1])
+		asteroid_instance.get_node("LightOccluder2D").occluder.polygon = new_asteroid_poly[1]
 		asteroid_instance.global_position = self.global_position
 		asteroid_instance.rotation = self.rotation
 		asteroid_instance.original_asteroid_flag = false
@@ -68,6 +71,7 @@ func update_asteroid_polygons(new_asteroid_poly : Array[PackedVector2Array]) -> 
 	new_asteroid_poly[0] = Transform2D(-self.rotation, Vector2.ZERO) * new_asteroid_poly[0]
 	visual_poly.polygon = new_asteroid_poly[0]
 	collision_poly.set_deferred("polygon", new_asteroid_poly[0])
+	occluder_poly.set_deferred("polygon", new_asteroid_poly[0])
 
 
 func calculate_polygon_area() -> void:

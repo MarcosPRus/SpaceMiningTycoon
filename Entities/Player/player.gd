@@ -4,15 +4,13 @@ extends RigidBody2D
 @export var torque_power : float = 100000
 
 @onready var raycast := $RayCast2D
-@onready var particles := $GPUParticles2D
-@onready var laser_line := $Line2D
+@onready var laser := $Laser
 
 var can_mine := true
 
 
 func _ready() -> void:
 	Global.player = self
-	laser_line.width = Global.mining_poly_radius
 
 
 func _physics_process(delta: float) -> void:
@@ -32,25 +30,20 @@ func _physics_process(delta: float) -> void:
 	raycast.force_raycast_update()
 	if raycast.is_colliding():
 		Global.mining_point = raycast.get_collision_point()
-		particles.global_position = raycast.get_collision_point()
-		#print(raycast.get_collision_point())
-		#print(raycast.get_collider())
+
 		var body : RigidBody2D = raycast.get_collider()
 		
 		if Input.is_action_pressed("left_click"):
-			particles.emitting = true
-			laser_line.points[1] = (raycast.get_collision_point() - global_position).rotated(-rotation)
-			laser_line.show()
+			laser.set_objective_point()
+			laser.start_laser()
 			if can_mine:
 				can_mine = false
 				body.mine()
 				$MiningCooldownTimer.start()
 		else:
-			particles.emitting = false
-			laser_line.hide()
+			laser.stop_laser()
 	else:
-		particles.emitting = false
-		laser_line.hide()
+		laser.stop_laser()
 #endregion
 
 
