@@ -1,25 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj1eyc2ce4se1"]
+[gd_scene load_steps=5 format=3 uid="uid://dj1eyc2ce4se1"]
 
 [ext_resource type="Script" path="res://Entities/Laser/laser.gd" id="1_5wrcg"]
 [ext_resource type="Texture2D" uid="uid://cqnwngtbyq7ir" path="res://Entities/Player/2d_lights_and_shadows_neutral_point_light.webp" id="1_7akcb"]
-
-[sub_resource type="Shader" id="Shader_7cqhh"]
-code = "shader_type canvas_item;
-
-void fragment() {
-    vec4 color = texture(TEXTURE, UV);
-
-    // Set laser color to bright red
-    color.rgb = vec3(5.0, 0.0, 0.0);
-
-    // Add glow effect
-    float glow = smoothstep(0.4, 0.9, color.a);
-    COLOR = vec4(color.rgb * glow, color.a);
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u6kso"]
-shader = SubResource("Shader_7cqhh")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ibytw"]
 particle_flag_disable_z = true
@@ -42,8 +24,7 @@ scale_max = 2.0
 color = Color(1, 0, 0, 1)
 
 [node name="Laser" type="Line2D"]
-modulate = Color(5, 0, 0, 1)
-material = SubResource("ShaderMaterial_u6kso")
+modulate = Color(29.73, 0, 0, 1)
 points = PackedVector2Array(32, 0, 300, 0)
 width = 5.0
 default_color = Color(1, 0, 0, 1)

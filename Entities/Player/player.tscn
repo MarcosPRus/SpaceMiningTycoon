@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://kejbthfckq07"]
+[gd_scene load_steps=7 format=3 uid="uid://kejbthfckq07"]
 
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_i28pa"]
 [ext_resource type="Texture2D" uid="uid://dox8xjmovk5e8" path="res://Entities/Player/cone_light_rotated.jpg" id="2_ol4ds"]
 [ext_resource type="PackedScene" uid="uid://dj1eyc2ce4se1" path="res://Entities/Laser/laser.tscn" id="3_300b8"]
+[ext_resource type="Texture2D" uid="uid://cqnwngtbyq7ir" path="res://Entities/Player/2d_lights_and_shadows_neutral_point_light.webp" id="4_pj51x"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_u82r4"]
 polygon = PackedVector2Array(1, -10, 8, -18, 16, -20, 24, -18, 31, -10, 32, 8, 40, 24, -8, 24, 0, 8, 0, 0)
@@ -57,6 +58,12 @@ texture = ExtResource("2_ol4ds")
 offset = Vector2(0, -128)
 
 [node name="Laser" parent="." instance=ExtResource("3_300b8")]
+visible = false
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+color = Color(0, 0.885367, 0.196281, 1)
+texture = ExtResource("4_pj51x")
+texture_scale = 0.05
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="MiningCooldownTimer" to="." method="_on_mining_cooldown_timer_timeout"]
