@@ -12,7 +12,7 @@ var asteroid_polygon : PackedVector2Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	asteroid_polygon.resize(Global.asteroids_reslution)
+	asteroid_polygon.resize(Global.asteroids_resolution)
 
 	# Original asteroid flag is set to false when a new asteroid is created from a division of
 	# another asteroid, so that it doesn't initialize a random shape again 
@@ -88,14 +88,15 @@ func update_border_line() -> void:
 
 func generate_random_asteroid() -> void:
 	var ang := 0.0
+	var asteroid_size = randf_range(Global.asteroids_min_size, Global.asteroids_max_size)
 	
 	#for i in visual_poly.polygon.size():
-	for i in range(Global.asteroids_reslution):
-		var length = randf_range(50, 100)
+	for i in range(Global.asteroids_resolution):
+		var length = randf_range((1-Global.asteroid_spikiness)*asteroid_size, (1+Global.asteroid_spikiness)*asteroid_size)
 		var vertex = Vector2(length * cos(deg_to_rad(ang)), length * sin(deg_to_rad(ang)))
 		asteroid_polygon[i] = vertex
 		
-		ang += 360/Global.asteroids_reslution
+		ang += 360/Global.asteroids_resolution
 	
 	visual_poly.polygon = asteroid_polygon
 	collision_poly.polygon = asteroid_polygon
