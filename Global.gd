@@ -10,5 +10,7 @@ var player : RigidBody2D
 
 var offset_mining_poly : PackedVector2Array
 
+var asteroids_reslution : int = 25 #Number of vertex in the asteroid polygons
+
 func _process(delta: float) -> void:
 	pass

@@ -8,24 +8,16 @@ var asteroid_scene = preload("res://Entities/Asteroids/asteroid.tscn")
 @onready var collision_poly := $CollisionPolygon2D
 @onready var occluder_poly : OccluderPolygon2D = $LightOccluder2D.occluder
 
+var asteroid_polygon : PackedVector2Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	asteroid_polygon.resize(Global.asteroids_reslution)
+
 	# Original asteroid flag is set to false when a new asteroid is created from a division of
 	# another asteroid, so that it doesn't initialize a random shape again 
 	if original_asteroid_flag:
-		## Generate random asteroid shape
-		var ang := 0.0
-		
-		for i in visual_poly.polygon.size():
-			var length = randf_range(50, 100)
-			var vertex = Vector2(length * cos(deg_to_rad(ang)), length * sin(deg_to_rad(ang)))
-			visual_poly.polygon[i] = vertex
-			collision_poly.polygon[i] = vertex
-			occluder_poly.polygon[i] = vertex
-			
-			ang += 360/visual_poly.polygon.size()
+		generate_random_asteroid()
 	
 	# Set the mass based on the polygon area, destroy small polygons
 	calculate_polygon_area()
@@ -88,6 +80,23 @@ func calculate_polygon_area() -> void:
 	else:
 		self.mass = area/1000
 
+
 func update_border_line() -> void:
 	$Polygon2D/Line2D.points = $Polygon2D/Line2D.get_parent().polygon
 	$Polygon2D/Line2D.add_point($Polygon2D/Line2D.get_parent().polygon[0])
+
+
+func generate_random_asteroid() -> void:
+	var ang := 0.0
+	
+	#for i in visual_poly.polygon.size():
+	for i in range(Global.asteroids_reslution):
+		var length = randf_range(50, 100)
+		var vertex = Vector2(length * cos(deg_to_rad(ang)), length * sin(deg_to_rad(ang)))
+		asteroid_polygon[i] = vertex
+		
+		ang += 360/Global.asteroids_reslution
+	
+	visual_poly.polygon = asteroid_polygon
+	collision_poly.polygon = asteroid_polygon
+	occluder_poly.polygon = asteroid_polygon

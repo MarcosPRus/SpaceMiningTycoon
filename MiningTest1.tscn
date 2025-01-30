@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl8qwvh0d76mh"]
+[gd_scene load_steps=6 format=3 uid="uid://dl8qwvh0d76mh"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_425uj"]
 [ext_resource type="PackedScene" uid="uid://cnf2wpnymnas" path="res://Entities/Mining Poly/mining_poly.tscn" id="2_jc8s5"]
 [ext_resource type="PackedScene" uid="uid://kejbthfckq07" path="res://Entities/Player/player.tscn" id="3_17y04"]
 [ext_resource type="PackedScene" uid="uid://draiodnsaq18t" path="res://Entities/Asteroids/asteroid.tscn" id="4_j7je8"]
 [ext_resource type="Texture2D" uid="uid://ba4wctamka6do" path="res://Assets/Space Backgrounds/Large 1024x1024/Starfields/Starfield_01-1024x1024.png" id="5_d5ytq"]
-[ext_resource type="Texture2D" uid="uid://cqnwngtbyq7ir" path="res://Entities/Player/2d_lights_and_shadows_neutral_point_light.webp" id="6_vt5ge"]
 
 [node name="MiningTest1" type="Node2D"]
 script = ExtResource("1_425uj")
@@ -49,9 +48,3 @@ position = Vector2(224, 344)
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("5_d5ytq")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(0.788657, 0.0023276, 0.98036, 1)
-shadow_enabled = true
-texture = ExtResource("6_vt5ge")
-texture_scale = 3.0
