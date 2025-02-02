@@ -17,12 +17,15 @@ metadata/_edit_group_ = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0, 0, 0, 1)
+texture_repeat = 2
+color = Color(0.0509804, 0, 0.101961, 1)
+polygon = PackedVector2Array(136, 64, -80, 120, -120, -112, 96, -64)
 
 [node name="Line2D" type="Line2D" parent="Polygon2D"]
-width = 5.0
+width = 2.0
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 occluder = SubResource("OccluderPolygon2D_nqjo3")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

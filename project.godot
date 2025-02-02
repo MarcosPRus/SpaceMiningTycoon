@@ -25,7 +25,8 @@ settings/stdout/print_fps=true
 
 [display]
 
-window/size/viewport_width=1024
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/mode=2
 window/stretch/mode="viewport"
 
@@ -66,7 +67,8 @@ left_click={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.0509804, 0, 0.101961, 1)
 viewport/hdr_2d=true

@@ -58,7 +58,6 @@ texture = ExtResource("2_ol4ds")
 offset = Vector2(0, -128)
 
 [node name="Laser" parent="." instance=ExtResource("3_300b8")]
-visible = false
 
 [node name="PointLight2D3" type="PointLight2D" parent="."]
 color = Color(0, 0.885367, 0.196281, 1)

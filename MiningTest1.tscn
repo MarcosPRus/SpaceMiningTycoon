@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl8qwvh0d76mh"]
+[gd_scene load_steps=7 format=3 uid="uid://dl8qwvh0d76mh"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_425uj"]
 [ext_resource type="PackedScene" uid="uid://cnf2wpnymnas" path="res://Entities/Mining Poly/mining_poly.tscn" id="2_jc8s5"]
@@ -6,14 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://draiodnsaq18t" path="res://Entities/Asteroids/asteroid.tscn" id="4_j7je8"]
 [ext_resource type="PackedScene" uid="uid://cjqof4gp621o1" path="res://Entities/Background/background.tscn" id="5_1vwhq"]
 
+[sub_resource type="Environment" id="Environment_ngx2r"]
+background_mode = 3
+glow_enabled = true
+
 [node name="MiningTest1" type="Node2D"]
 script = ExtResource("1_425uj")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.136308, 0.136308, 0.136308, 0.93)
-
-[node name="MiningPoly" parent="." instance=ExtResource("2_jc8s5")]
 visible = false
+color = Color(0.0509804, 0, 0.101961, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_17y04")]
 position = Vector2(9, -73)
@@ -47,3 +49,9 @@ position = Vector2(-297, 19)
 position = Vector2(224, 344)
 
 [node name="Background" parent="." instance=ExtResource("5_1vwhq")]
+
+[node name="MiningPoly" parent="." instance=ExtResource("2_jc8s5")]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ngx2r")
